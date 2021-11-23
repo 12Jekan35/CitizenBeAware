@@ -51,7 +51,6 @@ public class InputController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         character = GetComponent<CharacterController>();
-        Debug.Log($"Здарова заебал");
     }
 
     void Update()
@@ -108,6 +107,7 @@ public class InputController : MonoBehaviour
     {
         mousePosition = actions.PlayerControls.MousePosition.ReadValue<Vector2>();
         RaycastHit hit;
+        ;
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(mousePosition.x, interactDistance, mousePosition.y));
 
         if (Physics.Raycast(ray, out hit))
