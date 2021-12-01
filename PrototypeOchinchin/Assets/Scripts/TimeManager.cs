@@ -4,6 +4,9 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class TimeManager : MonoBehaviour
 {
+    public delegate void TimeChanged(float time);
+    public event TimeChanged TimeEvent;
+    public static TimeManager Instance {get; private set;}
     [Header("Light")]
     [SerializeField] Light directionalLight;
     [SerializeField] private Gradient directionalLightGradient;
@@ -11,27 +14,38 @@ public class TimeManager : MonoBehaviour
 
     [Header("Time")]
     [SerializeField, Range(1, 3600)] private float timeDayInSeconds = 60;
-    [Range(0, 1)] private float timeProgress;
-    public float TimeProgress 
-    {
-        get => timeProgress;
-        set
-        {
-            timeProgress = value;
-            timeInMinutes = Mathf.Round(timeDayInMinutes * timeProgress);
-            RenderSettings.ambientLight = ambientLightGradient.Evaluate(timeProgress);
-            if (directionalLight != null)
-            {
-                directionalLight.color = directionalLightGradient.Evaluate(timeProgress);
-                directionalLight.transform.localEulerAngles = new Vector3(360 * timeProgress - 90, defaultAngles.x, defaultAngles.z);
-            }
-        }
-    }
-    [HideInInspector] public float timeInMinutes = 0;
+    [SerializeField, Range(0, 1)] private float timeProgress;
+    // public float TimeProgress 
+    // {
+    //     get => timeProgress;
+    //     set
+    //     {
+    //         timeProgress = value;
+    //         timeInMinutes = Mathf.Round(timeDayInMinutes * timeProgress);
+    //         RenderSettings.ambientLight = ambientLightGradient.Evaluate(timeProgress);
+    //         if (directionalLight != null)
+    //         {
+    //             directionalLight.color = directionalLightGradient.Evaluate(timeProgress);
+    //             directionalLight.transform.localEulerAngles = new Vector3(360 * timeProgress - 90, defaultAngles.x, defaultAngles.z);
+    //         }
+    //     }
+    // }
+    [HideInInspector] public int timeInMinutes = 0;
     private const float timeDayInMinutes = 1440;
     private Vector3 defaultAngles;
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(this);
+            return;
+        }
+        Instance = this;
+    }
     void Start()
     {
+        
         defaultAngles = directionalLight.transform.localEulerAngles;
     }
 
@@ -41,12 +55,19 @@ public class TimeManager : MonoBehaviour
         if (Application.isPlaying)
         {
             timeProgress += Time.deltaTime / timeDayInSeconds;
-            
         }
 
         if (timeProgress >= 1f)
         {
             timeProgress = 0f;
         }
+        timeInMinutes = Mathf.RoundToInt(timeDayInMinutes * timeProgress);
+        RenderSettings.ambientLight = ambientLightGradient.Evaluate(timeProgress);
+        if (directionalLight != null)
+        {
+            directionalLight.color = directionalLightGradient.Evaluate(timeProgress);
+            directionalLight.transform.localEulerAngles = new Vector3(360 * timeProgress - 90, defaultAngles.x, defaultAngles.z);
+        }
+        TimeEvent?.Invoke(timeInMinutes);
     }
 }
