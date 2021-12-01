@@ -21,11 +21,11 @@ public class Clock : MonoBehaviour
     {
     }
 
-    void TimeHandler(float timeInMinutes)
+    void TimeHandler(int timeInMinutes)
     {
         
-        int hours = Mathf.RoundToInt(timeInMinutes / 60);
-        int minutes = Mathf.RoundToInt(timeInMinutes % 60);
+        int hours = timeInMinutes / 60;
+        int minutes = timeInMinutes % 60;
         CurrentTime.text = $"{hours}:{minutes}";
         
         Debug.Log($"{hours}:{minutes}");

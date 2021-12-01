@@ -4,7 +4,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class TimeManager : MonoBehaviour
 {
-    public delegate void TimeChanged(float time);
+    public delegate void TimeChanged(int time);
     public event TimeChanged TimeEvent;
     public static TimeManager Instance {get; private set;}
     [Header("Light")]
@@ -31,7 +31,7 @@ public class TimeManager : MonoBehaviour
     //     }
     // }
     [HideInInspector] public int timeInMinutes = 0;
-    private const float timeDayInMinutes = 1440;
+    private const int timeDayInMinutes = 1440;
     private Vector3 defaultAngles;
 
     void Awake()
