@@ -336,8 +336,8 @@ RectTransform:
   m_Children:
   - {fileID: 948339651}
   - {fileID: 265936692}
-  - {fileID: 1542069210}
   - {fileID: 476083146}
+  - {fileID: 1337576892}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -426,7 +426,7 @@ Transform:
   m_LocalScale: {x: 79.34883, y: 79.34883, z: 79.34883}
   m_Children: []
   m_Father: {fileID: 296275268}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -660,7 +660,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948339650}
   m_CullTransparentMesh: 1
---- !u!1 &1542069209
+--- !u!1 &1337576891
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -668,43 +668,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1542069210}
-  - component: {fileID: 1542069213}
-  - component: {fileID: 1542069212}
-  - component: {fileID: 1542069211}
+  - component: {fileID: 1337576892}
+  - component: {fileID: 1337576895}
+  - component: {fileID: 1337576894}
+  - component: {fileID: 1337576893}
   m_Layer: 0
-  m_Name: Levels
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1542069210
+--- !u!224 &1337576892
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542069209}
+  m_GameObject: {fileID: 1337576891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 296275268}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -510.85, y: -98.87}
-  m_SizeDelta: {x: 120.25, y: 56.61}
+  m_AnchoredPosition: {x: -549.14, y: -91.73}
+  m_SizeDelta: {x: 46.85, y: 39.67}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1542069211
+--- !u!114 &1337576893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542069209}
+  m_GameObject: {fileID: 1337576891}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -738,31 +738,31 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1542069212}
+  m_TargetGraphic: {fileID: 1337576894}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1542069212
+--- !u!114 &1337576894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542069209}
+  m_GameObject: {fileID: 1337576891}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.31132078, g: 0.1806248, b: 0.1806248, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: af7f0d6f49ac562478eb9e802bfa8aab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 244bd24ab79ba1b498b46e6ee3b5df1e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -772,11 +772,11 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!222 &1542069213
+--- !u!222 &1337576895
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1542069209}
+  m_GameObject: {fileID: 1337576891}
   m_CullTransparentMesh: 1
