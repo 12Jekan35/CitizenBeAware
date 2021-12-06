@@ -728,15 +728,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 746185151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3f26e9e7ca1af14f8955afb7352195d, type: 3}
+  m_Script: {fileID: 11500000, guid: c247c2b5e5719f64bbef2b4daca10da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveVector: {x: 0, y: 0}
   mouseVector: {x: 0, y: 0}
   playerCamera: {fileID: 963194227}
-  mouseSensitivity: 100
+  mouseSensitivity: 10
   moveSpeed: 12
-  gravity: -19.62
+  gravity: -9.81
   jumpHeight: 3.81
   mousePosition: {x: 0, y: 0}
   interactDistance: 25
