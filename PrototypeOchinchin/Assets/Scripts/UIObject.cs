@@ -1,18 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    Renderer renderer;
+    Animator animator;
+    private void Awake()
+    {
+        renderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        Hide();
+    }
+
+    private void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Hide()
     {
-        
+        renderer.enabled = false;
+        animator.Play("Exit");
+        animator.enabled = false;
+
+    }
+    public void Show()
+    {
+        renderer.enabled = true;
+        animator.enabled = true;
+
+        animator.Play("coolnewanimation");
     }
 }

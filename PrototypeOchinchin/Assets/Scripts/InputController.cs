@@ -9,7 +9,7 @@ public class InputController : MonoBehaviour
     [SerializeField] private Vector2 moveVector;
     [SerializeField] private Vector2 mouseVector;
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private float mouseSensitivity = 100.0f;
+    [SerializeField] private float mouseSensitivity = 10.0f;
     [SerializeField] private float moveSpeed = 12.0f;
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float jumpHeight = 3.81f;
@@ -20,6 +20,8 @@ public class InputController : MonoBehaviour
     [SerializeField] private bool inInteract = false;
 
     private float RotationX = 0f;
+
+    private InteractObject interactObject = null;
 
     private CharacterController character;
     void OnEnable()
@@ -34,7 +36,7 @@ public class InputController : MonoBehaviour
         actions.PlayerControls.Jump.performed += MakeJump;
         actions.PlayerControls.Jump.canceled += MakeJump;
 
-        actions.PlayerControls.Interact.performed += GetMousePosition;
+        actions.PlayerControls.Interact.performed += Interact;
     }
     void OnDisable()
     {
@@ -95,7 +97,6 @@ public class InputController : MonoBehaviour
     private void SetLookDirection(InputAction.CallbackContext context)
     {
         mouseVector = context.ReadValue<Vector2>();
-        Debug.Log($"mouse = {mouseVector}");
     }
     private void MakeJump(InputAction.CallbackContext context)
     {
@@ -103,22 +104,24 @@ public class InputController : MonoBehaviour
         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
 
-    private void GetMousePosition(InputAction.CallbackContext context)
+    private void Interact(InputAction.CallbackContext context)
     {
-        mousePosition = actions.PlayerControls.MousePosition.ReadValue<Vector2>();
         RaycastHit hit;
-        ;
-        Ray ray = playerCamera.ScreenPointToRay(new Vector3(mousePosition.x, interactDistance, mousePosition.y));
+        
+        Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, interactDistance));
 
         if (Physics.Raycast(ray, out hit))
         {
-            var obj = hit.transform.gameObject;
-            if (obj.tag == "InteractObject")
+            var intObj = hit.transform.gameObject;
+            Debug.Log(intObj.name);
+            if (intObj.tag == "InteractObject")
             {
                 inInteract = true;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;
                 Debug.Log($"Switching to the Interact mode");
+                interactObject = intObj.GetComponent<InteractObject>();
+                interactObject.Interact();
                 actions.PlayerControls.QuitInteract.performed += QuitInteract;
             }
         }
@@ -132,7 +135,9 @@ public class InputController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             Debug.Log($"Switching to the Moving mode");
+            interactObject.QuitInteract();
             actions.PlayerControls.QuitInteract.performed -= QuitInteract;
+
         }
     }
 }
