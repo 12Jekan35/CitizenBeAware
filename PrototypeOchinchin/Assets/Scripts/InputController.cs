@@ -18,6 +18,7 @@ public class InputController : MonoBehaviour
     [SerializeField] private float interactDistance = 25f;
     [SerializeField] private Vector3 velocity;
     [SerializeField] private bool inInteract = false;
+    [SerializeField] private Pause pauseController;
 
     private float RotationX = 0f;
 
@@ -37,7 +38,24 @@ public class InputController : MonoBehaviour
         actions.PlayerControls.Jump.canceled += MakeJump;
 
         actions.PlayerControls.Interact.performed += Interact;
+        actions.PlayerControls.OpenMenu.performed += OpenMenu_performed;
     }
+
+    private void OpenMenu_performed(InputAction.CallbackContext obj)
+    {
+        if(pauseController != null)
+        {
+            if (pauseController.GameIsPaused)
+            {
+                pauseController.Resume();
+            }
+            else
+            {
+                pauseController.Paused();
+            }
+        }
+    }
+
     void OnDisable()
     {
         actions.Disable();

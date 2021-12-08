@@ -244,7 +244,7 @@ public class @MainActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e6d7759b-4e6d-495e-9294-8139bae4566c"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
