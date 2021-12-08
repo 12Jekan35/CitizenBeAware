@@ -6,38 +6,32 @@ using UnityEngine.UI;
 public class UIObject : MonoBehaviour
 {
 
-    public Renderer renderer;
-    public Animator animator;
+    public Renderer Renderer { get; private set; }
+    public Animator Animator { get; private set; }
     
     private void Awake()
     {
-        renderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        Renderer = GetComponent<SpriteRenderer>();
+        Animator = GetComponent<Animator>();
         Hide();
     }
-
-    private void Start()
-    {
-        
-    }
-
 
     public void Hide()
     {
         UIShow = false;
-        renderer.enabled = false;
-        animator.Play("Exit");
-        animator.enabled = false;
+        Renderer.enabled = false;
+        Animator.Play("Exit");
+        Animator.enabled = false;
         
 
     }
     public void Show()
     {
         UIShow = true;
-        renderer.enabled = true;
-        animator.enabled = true;
+        Renderer.enabled = true;
+        Animator.enabled = true;
         Shows.Invoke();
-        animator.Play("coolnewanimation");
+        Animator.Play("coolnewanimation");
         
     }
 

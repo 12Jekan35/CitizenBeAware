@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractObject : MonoBehaviour
 {
-    [SerializeField] private UIObject interactObjUI;
+    public UIObject interactObjUI;
     private void Start()
     {
         if (interactObjUI == null)
@@ -12,6 +12,8 @@ public class InteractObject : MonoBehaviour
             enabled = false;
         }
     }
+
+
 
     public void Interact()
     {
