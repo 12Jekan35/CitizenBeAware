@@ -19,6 +19,7 @@ public class Pause : MonoBehaviour
     public  bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     
+    
 
     public void Resume()
     {
