@@ -6,14 +6,14 @@ using UnityEngine.InputSystem;
 public class InputController : MonoBehaviour
 {
     [SerializeField] private MainActions actions;
-    [SerializeField] private Vector2 moveVector;
-    [SerializeField] private Vector2 mouseVector;
+    private Vector2 moveVector;
+    private Vector2 mouseVector;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float mouseSensitivity = 10.0f;
     [SerializeField] private float moveSpeed = 12.0f;
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float jumpHeight = 3.81f;
-
+    [SerializeField] private Scenes scenesController;
     [SerializeField] private Vector2 mousePosition;
     [SerializeField] private float interactDistance = 25f;
     [SerializeField] private Vector3 velocity;
@@ -40,10 +40,12 @@ public class InputController : MonoBehaviour
             if (pauseController.GameIsPaused)
             {
                 pauseController.Resume();
+                actions.PlayerControls.QuitInMenu.performed -= QuitInMenu;
             }
             else
             {
                 pauseController.Paused();
+                actions.PlayerControls.QuitInMenu.performed += QuitInMenu;
             }
         }
     }
@@ -68,6 +70,13 @@ public class InputController : MonoBehaviour
 
         actions.PlayerControls.Interact.performed += Interact;
         actions.PlayerControls.OpenMenu.performed += OpenMenu_performed;
+
+        
+    }
+
+    private void QuitInMenu(InputAction.CallbackContext obj)
+    {
+        scenesController.Scene(0);
     }
 
     void Start()

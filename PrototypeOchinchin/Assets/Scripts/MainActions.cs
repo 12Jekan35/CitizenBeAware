@@ -73,6 +73,14 @@ public class @MainActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""QuitInMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""2c2f8c17-2eb9-4537-bde1-10fd4a83c254"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -251,6 +259,17 @@ public class @MainActions : IInputActionCollection, IDisposable
                     ""action"": ""OpenMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e320fb8-2887-4250-8413-ebd788a6ff96"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuitInMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -266,6 +285,7 @@ public class @MainActions : IInputActionCollection, IDisposable
         m_PlayerControls_MousePosition = m_PlayerControls.FindAction("MousePosition", throwIfNotFound: true);
         m_PlayerControls_QuitInteract = m_PlayerControls.FindAction("QuitInteract", throwIfNotFound: true);
         m_PlayerControls_OpenMenu = m_PlayerControls.FindAction("OpenMenu", throwIfNotFound: true);
+        m_PlayerControls_QuitInMenu = m_PlayerControls.FindAction("QuitInMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -322,6 +342,7 @@ public class @MainActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_MousePosition;
     private readonly InputAction m_PlayerControls_QuitInteract;
     private readonly InputAction m_PlayerControls_OpenMenu;
+    private readonly InputAction m_PlayerControls_QuitInMenu;
     public struct PlayerControlsActions
     {
         private @MainActions m_Wrapper;
@@ -333,6 +354,7 @@ public class @MainActions : IInputActionCollection, IDisposable
         public InputAction @MousePosition => m_Wrapper.m_PlayerControls_MousePosition;
         public InputAction @QuitInteract => m_Wrapper.m_PlayerControls_QuitInteract;
         public InputAction @OpenMenu => m_Wrapper.m_PlayerControls_OpenMenu;
+        public InputAction @QuitInMenu => m_Wrapper.m_PlayerControls_QuitInMenu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -363,6 +385,9 @@ public class @MainActions : IInputActionCollection, IDisposable
                 @OpenMenu.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnOpenMenu;
                 @OpenMenu.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnOpenMenu;
                 @OpenMenu.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnOpenMenu;
+                @QuitInMenu.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnQuitInMenu;
+                @QuitInMenu.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnQuitInMenu;
+                @QuitInMenu.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnQuitInMenu;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -388,6 +413,9 @@ public class @MainActions : IInputActionCollection, IDisposable
                 @OpenMenu.started += instance.OnOpenMenu;
                 @OpenMenu.performed += instance.OnOpenMenu;
                 @OpenMenu.canceled += instance.OnOpenMenu;
+                @QuitInMenu.started += instance.OnQuitInMenu;
+                @QuitInMenu.performed += instance.OnQuitInMenu;
+                @QuitInMenu.canceled += instance.OnQuitInMenu;
             }
         }
     }
@@ -401,5 +429,6 @@ public class @MainActions : IInputActionCollection, IDisposable
         void OnMousePosition(InputAction.CallbackContext context);
         void OnQuitInteract(InputAction.CallbackContext context);
         void OnOpenMenu(InputAction.CallbackContext context);
+        void OnQuitInMenu(InputAction.CallbackContext context);
     }
 }

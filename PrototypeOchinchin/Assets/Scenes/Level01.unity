@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0040443907, g: 0.00022095608, b: 0.000000054970716, a: 1}
+  m_IndirectSpecularColor: {r: 0.0040443866, g: 0.00022095561, b: 0.000000054970716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2122517627}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
         m_MethodName: Scene
         m_Mode: 3
@@ -993,7 +993,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &516183224
 GameObject:
@@ -1025,13 +1025,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c247c2b5e5719f64bbef2b4daca10da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveVector: {x: 0, y: 0}
-  mouseVector: {x: 0, y: 0}
   playerCamera: {fileID: 738914267}
   mouseSensitivity: 5
   moveSpeed: 12
   gravity: -19.62
   jumpHeight: 3.81
+  scenesController: {fileID: 786995140}
   mousePosition: {x: 0, y: 0}
   interactDistance: 50
   velocity: {x: 0, y: 0, z: 0}
@@ -1524,6 +1523,7 @@ GameObject:
   - component: {fileID: 786995134}
   - component: {fileID: 786995138}
   - component: {fileID: 786995139}
+  - component: {fileID: 786995140}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1648,6 +1648,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameIsPaused: 0
   pauseMenuUI: {fileID: 1013535853}
+--- !u!114 &786995140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786995133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc108221ece2fe40b4f155df75cd8af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &826212275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2051,7 +2063,7 @@ Transform:
   m_Children:
   - {fileID: 492198786}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &968612481 stripped
 GameObject:
@@ -3075,7 +3087,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2092323880
 PrefabInstance:
@@ -3146,46 +3158,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d68f2f4109d41d846b8ab5debcb51b59, type: 3}
---- !u!1 &2122517626
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2122517628}
-  - component: {fileID: 2122517627}
-  m_Layer: 0
-  m_Name: Scenes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2122517627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122517626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfc108221ece2fe40b4f155df75cd8af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &2122517628
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122517626}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22395909, y: 11.049901, z: -0.16247281}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
