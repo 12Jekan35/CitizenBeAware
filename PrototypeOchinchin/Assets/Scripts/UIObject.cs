@@ -42,6 +42,4 @@ public class UIObject : MonoBehaviour
     }
     public delegate void ShowSubs();
     public event ShowSubs Shows;
-    
-
 }

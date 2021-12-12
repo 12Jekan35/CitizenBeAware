@@ -15,21 +15,6 @@ public class TimeManager : MonoBehaviour
     [Header("Time")]
     [SerializeField, Range(1, 3600)] private float timeDayInSeconds = 60;
     [SerializeField, Range(0, 1)] private float timeProgress;
-    // public float TimeProgress 
-    // {
-    //     get => timeProgress;
-    //     set
-    //     {
-    //         timeProgress = value;
-    //         timeInMinutes = Mathf.Round(timeDayInMinutes * timeProgress);
-    //         RenderSettings.ambientLight = ambientLightGradient.Evaluate(timeProgress);
-    //         if (directionalLight != null)
-    //         {
-    //             directionalLight.color = directionalLightGradient.Evaluate(timeProgress);
-    //             directionalLight.transform.localEulerAngles = new Vector3(360 * timeProgress - 90, defaultAngles.x, defaultAngles.z);
-    //         }
-    //     }
-    // }
     [HideInInspector] public int timeInMinutes = 0;
     private const int timeDayInMinutes = 1440;
     private Vector3 defaultAngles;

@@ -150,11 +150,12 @@ public class InputController : MonoBehaviour
             Debug.Log(intObj.name);
             if (intObj.tag == "InteractObject")
             {
+                interactObject = intObj.GetComponent<InteractObject>();
+                if (interactObject)
                 inInteract = true;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;
                 Debug.Log($"Switching to the Interact mode");
-                interactObject = intObj.GetComponent<InteractObject>();
                 interactObject.Interact();
                 actions.PlayerControls.QuitInteract.performed += QuitInteract;
             }
