@@ -20,14 +20,14 @@ public class InteractObject : MonoBehaviour
 
     public void Interact()
     {
-        if 
+        
         switch (type)
         {
             case InteractType.Door:
                 break;
-            case InteractType.Animation:
-                break;
             case InteractType.Pickup:
+                break;
+            case InteractType.Animation:
                 InteractObjUI.Show();
                 gameObject.SetActive(false);
                 break;
@@ -40,10 +40,9 @@ public class InteractObject : MonoBehaviour
         {
             case InteractType.Door:
                 break;
-            case InteractType.Animation:
-
-                break;
             case InteractType.Pickup:
+                break;
+            case InteractType.Animation:
                 InteractObjUI.Hide();
                 gameObject.SetActive(true);
                 break;

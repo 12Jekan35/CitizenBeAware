@@ -11,13 +11,14 @@ public class TimeManager : MonoBehaviour
     [SerializeField] Light directionalLight;
     [SerializeField] private Gradient directionalLightGradient;
     [SerializeField] private Gradient ambientLightGradient;
+    private Vector3 defaultAngles;
 
     [Header("Time")]
     [SerializeField, Range(1, 3600)] private float timeDayInSeconds = 60;
-    [SerializeField, Range(0, 1)] private float timeProgress;
+    [SerializeField, Range(0, 1)] public float timeProgress;
     [HideInInspector] public int timeInMinutes = 0;
     private const int timeDayInMinutes = 1440;
-    private Vector3 defaultAngles;
+    
 
     void Awake()
     {
@@ -32,6 +33,7 @@ public class TimeManager : MonoBehaviour
     {
         
         defaultAngles = directionalLight.transform.localEulerAngles;
+
     }
 
     // Update is called once per frame
@@ -47,6 +49,7 @@ public class TimeManager : MonoBehaviour
             timeProgress = 0f;
         }
         timeInMinutes = Mathf.RoundToInt(timeDayInMinutes * timeProgress);
+
         RenderSettings.ambientLight = ambientLightGradient.Evaluate(timeProgress);
         if (directionalLight != null)
         {
@@ -54,5 +57,10 @@ public class TimeManager : MonoBehaviour
             directionalLight.transform.localEulerAngles = new Vector3(360 * timeProgress - 90, defaultAngles.x, defaultAngles.z);
         }
         TimeEvent?.Invoke(timeInMinutes);
+
+       
     }
+
+
+
 }

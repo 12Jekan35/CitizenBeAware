@@ -34,6 +34,11 @@ public class TaskManager : MonoBehaviour
         {
             endPanel.SetActive(true);
         }
+
+        if(TimeManager.Instance.timeProgress > CompleteTime)
+        {
+            Debug.Log("Ты лох");
+        }
     }
 
 }
