@@ -5,7 +5,7 @@ using UnityEngine;
 public class TaskManager : MonoBehaviour
 {
     public static TaskManager Instance { get; private set; }
-    private GameObject endPanel;
+    [SerializeField] private GameObject endPanel;
 
     [SerializeField] private InteractObject[] tasks;
     [SerializeField, Range(0, 1)] private float CompleteTime;
@@ -27,7 +27,7 @@ public class TaskManager : MonoBehaviour
         ExitObject.IsInteract += CompleteLevel;
     }
 
-    private void CompleteLevel()
+    public void CompleteLevel()
     {
         Pause.Instance.End();
         if (endPanel != null)

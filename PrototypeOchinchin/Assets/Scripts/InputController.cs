@@ -144,20 +144,25 @@ public class InputController : MonoBehaviour
         
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, interactDistance));
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit) && hit.distance <= interactDistance)
         {
             var intObj = hit.transform.gameObject;
             Debug.Log(intObj.name);
             if (intObj.tag == "InteractObject")
             {
                 interactObject = intObj.GetComponent<InteractObject>();
-                if (interactObject)
-                inInteract = true;
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.Confined;
-                Debug.Log($"Switching to the Interact mode");
-                interactObject.Interact();
-                actions.PlayerControls.QuitInteract.performed += QuitInteract;
+                if (interactObject != null)
+                {
+                    if (interactObject.Type == InteractType.Animation)
+                    {
+                        inInteract = true;
+                        Cursor.visible = true;
+                        Cursor.lockState = CursorLockMode.Confined;
+                        Debug.Log($"Switching to the Interact mode");
+                        actions.PlayerControls.QuitInteract.performed += QuitInteract;
+                    }
+                    interactObject.Interact();
+                }
             }
         }
     }

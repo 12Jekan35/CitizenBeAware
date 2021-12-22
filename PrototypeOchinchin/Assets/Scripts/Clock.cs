@@ -28,6 +28,6 @@ public class Clock : MonoBehaviour
         int minutes = timeInMinutes % 60;
         CurrentTime.text = $"{hours}:{minutes}";
         
-        Debug.Log($"{hours}:{minutes}");
+        //Debug.Log($"{hours}:{minutes}");
     }
 }

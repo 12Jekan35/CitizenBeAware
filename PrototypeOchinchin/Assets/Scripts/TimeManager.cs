@@ -53,6 +53,7 @@ public class TimeManager : MonoBehaviour
         if (timeProgress >= 1f)
         {
             timeProgress = 0f;
+            TaskManager.Instance.CompleteLevel();
         }
         timeInMinutes = Mathf.RoundToInt(timeDayInMinutes * timeProgress);
 
