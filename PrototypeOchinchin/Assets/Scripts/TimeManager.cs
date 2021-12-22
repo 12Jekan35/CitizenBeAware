@@ -18,7 +18,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField, Range(0, 1)] public float timeProgress;
     [HideInInspector] public int timeInMinutes = 0;
     private const int timeDayInMinutes = 1440;
-    
+    private bool withLight = false;
 
     void Awake()
     {
@@ -31,9 +31,15 @@ public class TimeManager : MonoBehaviour
     }
     void Start()
     {
-        
-        defaultAngles = directionalLight.transform.localEulerAngles;
-
+        if (directionalLight != null)
+        {
+            defaultAngles = directionalLight.transform.localEulerAngles;
+            withLight = true;
+        }
+        else
+        {
+            withLight = false;
+        }
     }
 
     // Update is called once per frame
@@ -50,9 +56,9 @@ public class TimeManager : MonoBehaviour
         }
         timeInMinutes = Mathf.RoundToInt(timeDayInMinutes * timeProgress);
 
-        RenderSettings.ambientLight = ambientLightGradient.Evaluate(timeProgress);
-        if (directionalLight != null)
+        if (withLight)
         {
+            RenderSettings.ambientLight = ambientLightGradient.Evaluate(timeProgress);
             directionalLight.color = directionalLightGradient.Evaluate(timeProgress);
             directionalLight.transform.localEulerAngles = new Vector3(360 * timeProgress - 90, defaultAngles.x, defaultAngles.z);
         }
