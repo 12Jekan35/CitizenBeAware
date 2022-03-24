@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pause : MonoBehaviour
 {
     public static Pause Instance { get; private set; }
-
+    public bool GameIsEnd = false;
     private void Awake()
     {
         if (Instance != null)
@@ -42,7 +42,7 @@ public class Pause : MonoBehaviour
     public void End()
     {
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        GameIsEnd = true;
 
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;

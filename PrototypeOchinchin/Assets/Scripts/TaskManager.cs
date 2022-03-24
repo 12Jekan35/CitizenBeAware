@@ -6,7 +6,7 @@ public class TaskManager : MonoBehaviour
 {
     public static TaskManager Instance { get; private set; }
     [SerializeField] private GameObject endPanel;
-
+    [SerializeField] private TasksViewer tasksViewer;
     [SerializeField] private InteractObject[] tasks;
     [SerializeField, Range(0, 1)] private float CompleteTime;
     [SerializeField] private InteractObject ExitObject;
@@ -33,6 +33,11 @@ public class TaskManager : MonoBehaviour
         if (endPanel != null)
         {
             endPanel.SetActive(true);
+            int counter = 0;
+            foreach (var task in tasks)
+                if (task.Completed)
+                    counter++;
+            tasksViewer.SetTasksInfo(counter, tasks.Length);
         }
 
         if(TimeManager.Instance.timeProgress > CompleteTime)

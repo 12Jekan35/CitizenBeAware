@@ -35,17 +35,17 @@ public class InputController : MonoBehaviour
 
     private void OpenMenu_performed(InputAction.CallbackContext obj)
     {
-        if(pauseController != null && !inInteract)
+        if(pauseController != null && !inInteract && !pauseController.GameIsEnd)
         {
             if (pauseController.GameIsPaused)
             {
                 pauseController.Resume();
-                actions.PlayerControls.QuitInMenu.performed -= QuitInMenu;
+                //actions.PlayerControls.QuitInMenu.performed -= QuitInMenu;
             }
             else
             {
                 pauseController.Paused();
-                actions.PlayerControls.QuitInMenu.performed += QuitInMenu;
+                //actions.PlayerControls.QuitInMenu.performed += QuitInMenu;
             }
         }
     }
@@ -88,11 +88,14 @@ public class InputController : MonoBehaviour
 
     void Update()
     {
-        if (!inInteract || !pauseController.GameIsPaused)
+        if (inInteract || pauseController.GameIsPaused || pauseController.GameIsEnd)
+        {
+            //nothing
+        }
+        else
         {
             MakeMove();
         }
-        
         if (character.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -137,7 +140,7 @@ public class InputController : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext context)
     {
-        if (pauseController.GameIsPaused)
+        if (pauseController.GameIsPaused || pauseController.GameIsEnd)
             return;
 
         RaycastHit hit;
