@@ -156,7 +156,7 @@ public class InputController : MonoBehaviour
                 interactObject = intObj.GetComponent<InteractObject>();
                 if (interactObject != null)
                 {
-                    if (interactObject.Type == InteractType.Animation)
+                    if (interactObject.Type == InteractType.Animation || interactObject.Type == InteractType.Pickup)
                     {
                         inInteract = true;
                         Cursor.visible = true;

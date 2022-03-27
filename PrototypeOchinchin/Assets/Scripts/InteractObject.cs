@@ -37,10 +37,12 @@ public class InteractObject : MonoBehaviour
                 door.OpenOrClose();
                 break;
             case InteractType.Pickup:
+                gameObject.SetActive(false);
+                InteractObjUI.Show();
                 break;
             case InteractType.Animation:
-                InteractObjUI.Show();
                 gameObject.SetActive(false);
+                InteractObjUI.Show();
                 break;
         }
         IsInteract?.Invoke();
@@ -53,6 +55,7 @@ public class InteractObject : MonoBehaviour
             case InteractType.Door:
                 break;
             case InteractType.Pickup:
+                InteractObjUI.Hide();
                 break;
             case InteractType.Animation:
                 InteractObjUI.Hide();
